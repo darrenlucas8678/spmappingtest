@@ -91,7 +91,7 @@ function clicked(d) {
   active.classed("active", false);
   active = d3.select(this).classed("active", true);
   
-  $("#listing").text = "test";
+  $("#listing").append(d.id);
 
   var bounds = path.bounds(d),
       dx = bounds[1][0] - bounds[0][0],
