@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+                                                                                
+"features": [
+{ "type": "Feature", "id": 25, "properties": { "NAME": "Cleveland"}, "geometry": { "type": "Point", "coordinates": [ -81.693711792157558, 41.499688177014832 ] } }
+]
+}
