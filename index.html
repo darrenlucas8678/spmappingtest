@@ -18,7 +18,7 @@
   fill: orange;
 }
 
-.feature:not(:focus):hover{
+.feature:not(.active):hover{
     fill: blue;
 }
 
@@ -82,6 +82,8 @@ function clicked(d) {
   if (active.node() === this) return reset();
   active.classed("active", false);
   active = d3.select(this).classed("active", true);
+  
+  alert(d.id)
 
   var bounds = path.bounds(d),
       dx = bounds[1][0] - bounds[0][0],
