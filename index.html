@@ -132,12 +132,14 @@ function listLocations(d){
 }
 
 function showLocations(error, locations){
-    svg.selectAll('.cities')
+    g.selectAll('.cities')
 		.data(locations.features)
 		.enter()
 		.append('path')
 		.attr('d', path.pointRadius(5))
 		.attr('class', 'cities');
+        
+    $("#listing").text(locations.properties.NAME);
 }
 
 </script>
