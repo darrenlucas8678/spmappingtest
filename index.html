@@ -37,12 +37,12 @@
 </style>
 </head>
 <body>
-        <div id="listining">
+        <div id="listing">
            </div>
     
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
-<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="://d3js.org/queue.v1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 
@@ -91,7 +91,7 @@ function clicked(d) {
   active.classed("active", false);
   active = d3.select(this).classed("active", true);
   
-  $("#listing").append(d.id);
+  $("#listing").text(d.id);
 
   var bounds = path.bounds(d),
       dx = bounds[1][0] - bounds[0][0],
