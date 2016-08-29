@@ -133,7 +133,7 @@ function listLocations(d){
 
 function showLocations(error, locations){
     svg.selectAll('.cities')
-		.data(cities.features)
+		.data(locations.features)
 		.enter()
 		.append('path')
 		.attr('d', path.pointRadius(5))
