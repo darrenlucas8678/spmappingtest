@@ -96,8 +96,8 @@ function clicked(d) {
   active.classed("active", false);
   active = d3.select(this).classed("active", true);
   
-  if (d.id === 39){
-    $("#listing").text(d.id);
+  if (d.id === 39)
+  {
     queue()
 	.defer(d3.json, 'ohio.json')
 	.await(showLocations);
@@ -139,7 +139,7 @@ function showLocations(error, locations){
 		.attr('d', path.pointRadius(5))
 		.attr('class', 'cities');
         
-    $("#listing").text(locations.properties.NAME);
+    $("#listing").text(locations.NAME);
 }
 
 </script>
