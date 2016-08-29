@@ -139,7 +139,7 @@ function showLocations(error, locations){
 		.attr('d', path.pointRadius(5))
 		.attr('class', 'cities');
         
-    $("#listing").text(locations.NAME);
+    $("#listing").text(locations.features.properties.NAME);
 }
 
 </script>
