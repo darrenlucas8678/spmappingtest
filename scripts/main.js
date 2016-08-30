@@ -8,16 +8,16 @@ requirejs.config({
 });
 
 requirejs( ['jquery','lodash', 'd3'],
-    function ($, _, dd) {
+    function ($, _, d3) {
         var width = 960,
             height = 500,
-            active = dd.select(null);
+            active = d3.select(null);
 
-        var projection = dd.geo.albersUsa()
+        var projection = d3.albersUsa()
             .scale(1000)
             .translate([width / 2, height / 2]);
 
-        var path = d3.geo.path()
+        var path = d3.path()
             .projection(projection);
 
         var svg = d3.select("body").append("svg")
