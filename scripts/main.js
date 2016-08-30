@@ -6,8 +6,8 @@ requirejs.config({
     }
 });
 
-requirejs(['jquery','lodash', 'd3', 'd3-queue'],
-function ($, _, d3, queue) {
+requirejs(['jquery','lodash', 'd3'],
+function ($, _, d3) {
     var width = 960,
         height = 500,
         active = d3.select(null);
