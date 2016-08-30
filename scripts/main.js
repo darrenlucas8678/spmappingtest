@@ -1,11 +1,16 @@
 requirejs.config({
     baseUrl: 'scripts/lib',
+    shim: {
+         d3: {
+              exports: 'd3'
+             }
+    },
     paths: {
         app: '../app'
     }
 });
 
-require(['jquery','lodash','d3','d3-queue'],
+require(['jquery','lodash', 'd3', 'd3-queue'],
 function ($, _, d3, queue){
     
     var width = 960,
