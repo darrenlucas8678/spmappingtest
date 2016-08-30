@@ -2,7 +2,7 @@ requirejs.config({
     baseUrl: 'scripts/lib',
     paths: {
         app: '../app',
-        d3 : 'd3'
+        d3 : '/d3'
     }
 });
 
