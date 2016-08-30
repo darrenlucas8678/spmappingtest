@@ -2,11 +2,11 @@
 "type": "FeatureCollection",
                                                                                 
 "features": [
-{ "type": "Feature", "id": 1, "properties": { "NAME": "Cleveland"}, "geometry": { "type": "Point", "coordinates": [ -81.693711792157558, 41.499688177014832 ] } }
-{ "type": "Feature", "id": 2, "properties": { "NAME": "Cleveland2"}, "geometry": { "type": "Point", "coordinates": [ -85.693711792157558, 41.499688177014832 ] } }
-{ "type": "Feature", "id": 3, "properties": { "NAME": "Cleveland3"}, "geometry": { "type": "Point", "coordinates": [ -86.693711792157558, 41.499688177014832 ] } }
-{ "type": "Feature", "id": 4, "properties": { "NAME": "Cleveland4"}, "geometry": { "type": "Point", "coordinates": [ -87.693711792157558, 41.499688177014832 ] } }
-{ "type": "Feature", "id": 5, "properties": { "NAME": "Cleveland5"}, "geometry": { "type": "Point", "coordinates": [ -88.693711792157558, 41.499688177014832 ] } }
+{ "type": "Feature", "id": 1, "properties": { "NAME": "Cleveland1"}, "geometry": { "type": "Point", "coordinates": [ -81.693711792157558, 41.499688177014832 ] } },
+{ "type": "Feature", "id": 2, "properties": { "NAME": "Cleveland2"}, "geometry": { "type": "Point", "coordinates": [ -85.693711792157558, 41.499688177014832 ] } },
+{ "type": "Feature", "id": 3, "properties": { "NAME": "Cleveland3"}, "geometry": { "type": "Point", "coordinates": [ -86.693711792157558, 41.499688177014832 ] } },
+{ "type": "Feature", "id": 4, "properties": { "NAME": "Cleveland4"}, "geometry": { "type": "Point", "coordinates": [ -87.693711792157558, 41.499688177014832 ] } },
+{ "type": "Feature", "id": 5, "properties": { "NAME": "Cleveland5"}, "geometry": { "type": "Point", "coordinates": [ -88.693711792157558, 41.499688177014832 ] } },
 { "type": "Feature", "id": 6, "properties": { "NAME": "Cleveland6"}, "geometry": { "type": "Point", "coordinates": [ -89.693711792157558, 41.499688177014832 ] } }
 ]
 }
