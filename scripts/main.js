@@ -3,16 +3,10 @@ requirejs.config({
     paths: {
         app: '../app',
         d3 : 'd3'
-    },
-    shim: {
-        'd3.geo.projection' : ['d3.global']
-  }
-});
-define('d3.global', ['d3'], function(_) {
-  d3 = _;
+    }
 });
 
-require(['jquery','lodash', 'd3', 'd3-queue'],
+requirejs(['jquery','lodash', 'd3', 'd3-queue'],
 function ($, _, d3, queue) {
     var width = 960,
         height = 500,
