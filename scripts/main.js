@@ -2,14 +2,15 @@ requirejs.config({
     paths: {
         app:  'scripts/app',
         d3 :  'lib/d3',
+        queue: 'lib/d3-queue',
         jquery: 'lib/jquery',
         lodash:  'lib/lodash',
         topojson: 'lib/topojson'
     }
 });
 
-requirejs( ['jquery','lodash', 'd3', 'topojson'],
-    function ($, _, d3, topojson) {
+requirejs( ['jquery','lodash', 'd3', 'topojson','queue'],
+    function ($, _, d3, topojson, queue) {
         var width = 960,
             height = 500,
             active = d3.select(null);
