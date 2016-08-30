@@ -33,7 +33,7 @@ requirejs( ['jquery','lodash', 'd3'],
         var g = svg.append("g")
             .style("stroke-width", "1.5px");
 
-        d3.json("us.json", function(error, us) {
+        d3.json("data/us.json", function(error, us) {
             if (error) throw error; 
 
             g.selectAll("path")
@@ -57,7 +57,7 @@ requirejs( ['jquery','lodash', 'd3'],
             if (d.id === 39)
             {
                 queue()
-                .defer(d3.json, 'ohio.json')
+                .defer(d3.json, 'data/ohio.json')
                 .await(showLocations);
             }
 
