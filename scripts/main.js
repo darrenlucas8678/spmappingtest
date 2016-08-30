@@ -8,12 +8,12 @@ requirejs.config({
 });
 
 requirejs( ['jquery','lodash', 'd3'],
-    function ($, _, d3) {
+    function ($, _, dd) {
         var width = 960,
             height = 500,
-            active = d3.select(null);
+            active = dd.select(null);
 
-        var projection = d3.geo.albersUsa()
+        var projection = dd.geo.albersUsa()
             .scale(1000)
             .translate([width / 2, height / 2]);
 
