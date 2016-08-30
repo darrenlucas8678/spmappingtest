@@ -1,7 +1,9 @@
 requirejs.config({
     paths: {
         app:  'scripts/app',
-        d3 :  'scripts/lib/d3'
+        d3 :  'scripts/lib/d3',
+        jquery: 'scripts/lib/jquery',
+        lodash:  'scripts/lib/lodash'
     }
 });
 
