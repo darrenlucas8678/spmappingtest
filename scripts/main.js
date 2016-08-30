@@ -58,7 +58,7 @@ requirejs( ['jquery','lodash', 'd3', 'topojson','queue'],
             
             if (d.id === 39)
             {
-                queue()
+                d3.queue()
                 .defer(d3.json, 'data/ohio.json')
                 .await(showLocations);
             }
