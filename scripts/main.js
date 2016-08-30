@@ -1,12 +1,8 @@
 requirejs.config({
     baseUrl: 'scripts/lib',
-    shim: {
-         d3: {
-              exports: 'd3'
-             }
-    },
     paths: {
-        app: '../app'
+        app: '../app',
+        d3 : 'd3'
     }
 });
 
