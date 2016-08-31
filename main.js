@@ -72,6 +72,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 .duration(750)
                 .style('stroke-width', 1.5 / scale + 'px')                
                 .attr('transform', 'translate(' + translate + ')scale(' + scale + ')')
+                .selectAll('.cities')
                 .attr('d', path.pointRadius(2));
         }
 
@@ -94,8 +95,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 .data(locations.features)
                 .enter()
                 .append('path')
-                .attr('d', path.pointRadius(5))
-                
+                .attr('d', path.pointRadius(5))                
                 .attr('class', 'cities');
 
             locations.features.map(function (location) { $('#listing').append(location.properties.NAME); });
