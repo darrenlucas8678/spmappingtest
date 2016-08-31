@@ -1,10 +1,7 @@
 require.config({
+    baseUrl: '/scripts/lib',
     paths: {
-        app: 'scripts/app',
-        d3: 'lib/d3',
-        jquery: 'lib/jquery',
-        lodash: 'lib/lodash',
-        topojson: 'lib/topojson'
+        app: '../app'
     }
 });
 
