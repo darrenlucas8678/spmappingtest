@@ -1,14 +1,14 @@
-requirejs.config({
+require.config({
     paths: {
-        app:  'scripts/app',
-        d3 :  'lib/d3',
+        app: 'scripts/app',
+        d3: 'lib/d3',
         jquery: 'lib/jquery',
-        lodash:  'lib/lodash',
+        lodash: 'lib/lodash',
         topojson: 'lib/topojson'
     }
 });
 
-requirejs( ['jquery','lodash', 'd3', 'topojson'],
+require(['jquery', 'lodash', 'd3', 'topojson'],
     function ($, _, d3, topojson) {
         var width = 960,
             height = 500,
@@ -21,45 +21,44 @@ requirejs( ['jquery','lodash', 'd3', 'topojson'],
         var path = d3.geoPath()
             .projection(projection);
 
-        var svg = d3.select("body").append("svg")
-            .attr("width", width)
-            .attr("height", height);
+        var svg = d3.select('body').append('svg')
+            .attr('width', width)
+            .attr('height', height);
 
-        svg.append("rect")
-            .attr("class", "background")
-            .attr("width", width)
-            .attr("height", height)
-            .on("click", reset);
+        svg.append('rect')
+            .attr('class', 'background')
+            .attr('width', width)
+            .attr('height', height)
+            .on('click', reset);
 
-        var g = svg.append("g")
-            .style("stroke-width", "1.5px");
+        var g = svg.append('g')
+            .style('stroke-width', '1.5px');
 
-        d3.json("data/us.json", function(error, us) {
-            if (error) throw error; 
+        d3.json('data/us.json', function (error, us) {
+            if (error) throw error;
 
-            g.selectAll("path")
+            g.selectAll('path')
                 .data(topojson.feature(us, us.objects.states).features)
-                .enter().append("path")
-                .attr("d", path)
-                .attr("class", "feature")
-                .on("click", clicked);
+                .enter().append('path')
+                .attr('d', path)
+                .attr('class', 'feature')
+                .on('click', clicked);
 
-            g.append("path")
-                .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-                .attr("class", "mesh")
-                .attr("d", path);
+            g.append('path')
+                .datum(topojson.mesh(us, us.objects.states, function (a, b) { return a !== b; }))
+                .attr('class', 'mesh')
+                .attr('d', path);
         });
 
         function clicked(d) {
             if (active.node() === this) return reset();
-            active.classed("active", false);
-            active = d3.select(this).classed("active", true);
-            
-            if (d.id === 39)
-            {
+            active.classed('active', false);
+            active = d3.select(this).classed('active', true);
+
+            if (d.id === 39) {
                 d3.queue()
-                .defer(d3.json, 'data/ohio.json')
-                .await(showLocations);
+                    .defer(d3.json, 'data/ohio.json')
+                    .await(showLocations);
             }
 
             var bounds = path.bounds(d),
@@ -72,32 +71,32 @@ requirejs( ['jquery','lodash', 'd3', 'topojson'],
 
             g.transition()
                 .duration(750)
-                .style("stroke-width", 1.5 / scale + "px")
-                .attr("transform", "translate(" + translate + ")scale(" + scale + ")")
-            }
+                .style('stroke-width', 1.5 / scale + 'px')
+                .attr('transform', 'translate(' + translate + ')scale(' + scale + ')');
+        }
 
-            function reset() {
-                active.classed("active", false);
-                active = d3.select(null);
+        function reset() {
+            active.classed('active', false);
+            active = d3.select(null);
 
-                g.transition()
-                    .duration(750)
-                    .style("stroke-width", "1.5px")
-                    .attr("transform", "");
-            }
+            g.transition()
+                .duration(750)
+                .style('stroke-width', '1.5px')
+                .attr('transform', '');
+        }
 
-            function listLocations(d){
-                
-            }
+        function listLocations(d) {
 
-            function showLocations(error, locations){
-                g.selectAll('.cities')
-                    .data(locations.features)
-                    .enter()
-                    .append('path')
-                    .attr('d', path.pointRadius(5))
-                    .attr('class', 'cities');
-                    
-                locations.features.map(function(location) {$("#listing").append(location.properties.NAME)});
-            }
+        }
+
+        function showLocations(error, locations) {
+            g.selectAll('.cities')
+                .data(locations.features)
+                .enter()
+                .append('path')
+                .attr('d', path.pointRadius(5))
+                .attr('class', 'cities');
+
+            locations.features.map(function (location) { $('#listing').append(location.properties.NAME); });
+        }
     });
