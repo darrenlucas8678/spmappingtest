@@ -66,7 +66,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 scale = .9 / Math.max(dx / width, dy / height),
                 translate = [width / 2 - scale * x, height / 2 - scale * y];
           
-          g.selectAll('cities')
+            g.selectAll('.cities')
              .attr('d', path.pointRadius(2));
 
             g.transition()
