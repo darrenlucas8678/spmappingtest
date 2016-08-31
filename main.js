@@ -76,16 +76,16 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
 
         }
 
-        function showLocations(error, locations,d) {
+        function showLocations(error, data) {
             g.selectAll('.cities')
-                .data(locations.features)
+                .data(data.locations.features)
                 .enter()
                 .append('path')             
                 .attr('class', 'cities');
 
-            locations.features.map(function (location) { $('#listing').append(location.properties.NAME); });
+            data.locations.features.map(function (location) { $('#listing').append(location.properties.NAME); });
             
-                var bounds = path.bounds(d),
+                var bounds = path.bounds(data.d),
                 dx = bounds[1][0] - bounds[0][0],
                 dy = bounds[1][1] - bounds[0][1],
                 x = (bounds[0][0] + bounds[1][0]) / 2,
