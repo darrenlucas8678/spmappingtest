@@ -75,7 +75,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
 
         }
 
-        function showLocations(error, locations,d) {
+        function showLocations(d,error, locations) {
             g.selectAll('.cities')
                 .data(locations.features)
                 .enter()
