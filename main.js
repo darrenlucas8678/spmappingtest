@@ -55,7 +55,8 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             if (d.id === 39) {
                 d3.queue()
                     .defer(d3.json, 'data/ohio.json')
-                    .await(showLocations(d));
+                    .defer(d)
+                    .await(showLocations);
             }
 
 
@@ -75,7 +76,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
 
         }
 
-        function showLocations(d,error, locations) {
+        function showLocations(error, locations,d) {
             g.selectAll('.cities')
                 .data(locations.features)
                 .enter()
