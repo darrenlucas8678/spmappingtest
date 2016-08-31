@@ -67,12 +67,13 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 translate = [width / 2 - scale * x, height / 2 - scale * y];
           
             g.selectAll('.cities')
-             .attr('d', path.pointRadius(2));
+             
 
             g.transition()
                 .duration(750)
                 .style('stroke-width', 1.5 / scale + 'px')                
-                .attr('transform', 'translate(' + translate + ')scale(' + scale + ')');
+                .attr('transform', 'translate(' + translate + ')scale(' + scale + ')'
+                .attr('d', path.pointRadius(2)));
         }
 
         function reset() {
