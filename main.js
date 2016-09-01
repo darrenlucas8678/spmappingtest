@@ -18,7 +18,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
         var path = d3.geoPath()
             .projection(projection);
 
-        var svg = d3.select('#locationSelector').insert('svg')
+        var svg = d3.select('#map').insert('svg')
             .attr('width', width)
             .attr('height', height);
 
