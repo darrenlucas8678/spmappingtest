@@ -50,13 +50,14 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
         
         function zoomed(d)
         {
-            d3.selectAll('path')
-            .attr('class','zoom inactive');
+
         }
 
         function clicked(d) {
             if (active.node() === this) return reset();
             active.classed('active', false);
+            d3.selectAll('path')
+            .attr('class','zoom inactive');
             active = d3.select(this).classed('active', true);
             
 
