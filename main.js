@@ -63,9 +63,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             
 
             if (d.id === 39) {
-                d3.queue()
-                    .defer(d3.json, 'data/ohio.json')
-                    .await(showLocations);
+                d3.json('data/ohio.json', showLocations);
             }
 
             var bounds = path.bounds(d),
@@ -108,7 +106,8 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 .data(locations.features)
                 .enter()
                 .append('path')             
-                .attr('class', 'cities');
+                .attr('class', 'cities')
+                .attr('d', path.pointRadius(6));
 
             locations.features.map(function (location) { $('#locations').append(location.properties.NAME); });
         }
