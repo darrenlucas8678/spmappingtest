@@ -9,7 +9,9 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
     function ($, _, d3, topojson) {
         var width = 960,
             height = 500,
-            active = d3.select(null);
+            active = d3.select(null),
+            scale = 1,
+           translate =  [0, 0];
 
         var projection = d3.geoAlbersUsa()
             .scale(1000)
@@ -70,8 +72,8 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 dx = bounds[1][0] - bounds[0][0],
                 dy = bounds[1][1] - bounds[0][1],
                 x = (bounds[0][0] + bounds[1][0]) / 2,
-                y = (bounds[0][1] + bounds[1][1]) / 2,
-                scale = .9 / Math.max(dx / width, dy / height),
+                y = (bounds[0][1] + bounds[1][1]) / 2;
+                scale = .9 / Math.max(dx / width, dy / height);
                 translate = [width / 2 - scale * x, height / 2 - scale * y];
          
              
