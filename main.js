@@ -98,6 +98,6 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 .attr('d', path.pointRadius(5))                
                 .attr('class', 'cities');
 
-            locations.features.map(function (location) { $('#listing').append(location.properties.NAME); });
+            locations.features.map(function (location) { $('#locations').append(location.properties.NAME); });
         }
     });
