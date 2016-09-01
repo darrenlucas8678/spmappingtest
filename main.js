@@ -56,9 +56,10 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
         function clicked(d) {
             if (active.node() === this) return reset();
             active.classed('active', false);
-            d3.selectAll('.feature').filter(function(d,i) {return (this !== active);})
-            .classed('inactive',true);
             active = d3.select(this).classed('active', true);
+            d3.selectAll('.feature').filter(':not(.active)')
+            .classed('inactive',true);
+
             
 
             if (d.id === 39) {
