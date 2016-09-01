@@ -94,8 +94,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             g.selectAll('.cities')
                 .data(locations.features)
                 .enter()
-                .append('path')
-                .attr('d', path.pointRadius(5))                
+                .append('path')             
                 .attr('class', 'cities');
 
             locations.features.map(function (location) { $('#locations').append(location.properties.NAME); });
