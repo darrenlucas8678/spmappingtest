@@ -89,6 +89,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
         function reset() {
             active.classed('active', false);
             active = d3.select(null);
+            d3.selectAll('.feature').classed('inactive', false);
 
             g.transition()
                 .duration(750)
