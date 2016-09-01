@@ -94,7 +94,9 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             g.transition()
                 .duration(750)
                 .style('stroke-width', '1.5px')
-                .attr('transform', '');
+                .attr('transform', '')               
+                .selectAll('.cities')
+                .attr('d', path.pointRadius(10));
         }
 
         function listLocations(d) {
