@@ -109,7 +109,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 .enter()
                 .append('path')             
                 .attr('class', 'cities')
-                .attr('d', path.pointRadius(6));
+                .attr('d', path.pointRadius(6/scale));
 
             locations.features.map(function (location) { $('#locations').append(location.properties.NAME); });
         }
