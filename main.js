@@ -58,8 +58,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             active.classed('active', false);
             active = d3.select(this).classed('active', true);
             d3.selectAll('.feature').filter(':not(.active)')
-            .classed('inactive',true)
-            .transition().duration(750);
+            .transition().duration(750).style('opacity','.5');
 
             
 
