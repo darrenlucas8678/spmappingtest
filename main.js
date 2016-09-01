@@ -39,18 +39,26 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 .enter().append('path')
                 .attr('d', path)
                 .attr('class', 'feature')
-                .on('click', clicked);
+                .on('click', clicked)
+                .on('zoom', zoomed);
 
             g.append('path')
                 .datum(topojson.mesh(us, us.objects.states, function (a, b) { return a !== b; }))
                 .attr('class', 'mesh')
                 .attr('d', path);
         });
+        
+        function zoomed(d)
+        {
+            d3.selectAll('path')
+            .attr('class','zoom inactive');
+        }
 
         function clicked(d) {
             if (active.node() === this) return reset();
             active.classed('active', false);
             active = d3.select(this).classed('active', true);
+            
 
             if (d.id === 39) {
                 d3.queue()
