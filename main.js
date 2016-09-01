@@ -55,11 +55,25 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             if (d.id === 39) {
                 d3.queue()
                     .defer(d3.json, 'data/ohio.json')
-                    .defer(function(d) {return d;})
                     .await(showLocations);
             }
 
+            var bounds = path.bounds(d),
+                dx = bounds[1][0] - bounds[0][0],
+                dy = bounds[1][1] - bounds[0][1],
+                x = (bounds[0][0] + bounds[1][0]) / 2,
+                y = (bounds[0][1] + bounds[1][1]) / 2,
+                scale = .9 / Math.max(dx / width, dy / height),
+                translate = [width / 2 - scale * x, height / 2 - scale * y];
+         
+             
 
+            g.transition()
+                .duration(750)
+                .style('stroke-width', 1.5 / scale + 'px')                
+                .attr('transform', 'translate(' + translate + ')scale(' + scale + ')')
+                .selectAll('.cities')
+                .attr('d', path.pointRadius(2));
         }
 
         function reset() {
@@ -76,30 +90,14 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
 
         }
 
-        function showLocations(error, locations,d) {
+        function showLocations(error, locations) {
             g.selectAll('.cities')
                 .data(locations.features)
                 .enter()
-                .append('path')             
+                .append('path')
+                .attr('d', path.pointRadius(5))                
                 .attr('class', 'cities');
 
             locations.features.map(function (location) { $('#listing').append(location.properties.NAME); });
-            
-                var bounds = path.bounds(d),
-                dx = bounds[1][0] - bounds[0][0],
-                dy = bounds[1][1] - bounds[0][1],
-                x = (bounds[0][0] + bounds[1][0]) / 2,
-                y = (bounds[0][1] + bounds[1][1]) / 2,
-                scale = .9 / Math.max(dx / width, dy / height),
-                translate = [width / 2 - scale * x, height / 2 - scale * y];
-         
-             
-
-            g.transition()
-                .duration(750)
-                .style('stroke-width', 1.5 / scale + 'px')                
-                .attr('transform', 'translate(' + translate + ')scale(' + scale + ')')
-                .selectAll('.cities')
-                .attr('d', path.pointRadius(2));
         }
     });

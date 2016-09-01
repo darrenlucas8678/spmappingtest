@@ -2,11 +2,15 @@
 "type": "FeatureCollection",
                                                                                 
 "features": [
-{ "type": "Feature", "id": 1, "properties": { "NAME": "Cleveland1"}, "geometry": { "type": "Point", "coordinates": [ -81.693711792157558, 41.499688177014832 ] } },
-{ "type": "Feature", "id": 2, "properties": { "NAME": "Cleveland2"}, "geometry": { "type": "Point", "coordinates": [ -85.693711792157558, 41.499688177014832 ] } },
-{ "type": "Feature", "id": 3, "properties": { "NAME": "Cleveland3"}, "geometry": { "type": "Point", "coordinates": [ -86.693711792157558, 41.499688177014832 ] } },
-{ "type": "Feature", "id": 4, "properties": { "NAME": "Cleveland4"}, "geometry": { "type": "Point", "coordinates": [ -87.693711792157558, 41.499688177014832 ] } },
-{ "type": "Feature", "id": 5, "properties": { "NAME": "Cleveland5"}, "geometry": { "type": "Point", "coordinates": [ -88.693711792157558, 41.499688177014832 ] } },
-{ "type": "Feature", "id": 6, "properties": { "NAME": "Cleveland6"}, "geometry": { "type": "Point", "coordinates": [ -89.693711792157558, 41.499688177014832 ] } }
+{ "type": "Feature", "id": 1, "properties": { "NAME": "Cintas Location"}, "geometry": { "type": "Point", "coordinates": [ -82.8385068,39.9912359] } },
+{ "type": "Feature", "id": 2, "properties": { "NAME": "Cintas Location"}, "geometry": { "type": "Point", "coordinates": [-81.80208729999998,41.34771739999999 ] } },
+{ "type": "Feature", "id": 3, "properties": { "NAME": "Cintas Location"}, "geometry": { "type": "Point", "coordinates": [ -84.18303329999998,39.8837748 ] } },
+{ "type": "Feature", "id": 4, "properties": { "NAME": "Cintas Location"}, "geometry": { "type": "Point", "coordinates": [ -82.546108,39.709608 ] } },
+{ "type": "Feature", "id": 5, "properties": { "NAME": "Cintas Location"}, "geometry": { "type": "Point", "coordinates": [ -83.54933299999999,41.556563 ] } },
+{ "type": "Feature", "id": 6, "properties": { "NAME": "Cintas Location"}, "geometry": { "type": "Point", "coordinates": [ -84.255879,39.15552700000001 ] } },
+{ "type": "Feature", "id": 6, "properties": { "NAME": "Cintas Location"}, "geometry": { "type": "Point", "coordinates": [ -81.41702699999996,40.918238 ] } },
+{ "type": "Feature", "id": 6, "properties": { "NAME": "Cintas Location"}, "geometry": { "type": "Point", "coordinates": [ -84.42609070000003,39.1735841 ] } },
+{ "type": "Feature", "id": 6, "properties": { "NAME": "Cintas Location"}, "geometry": { "type": "Point", "coordinates": [ -81.46728439999998,41.37696069999999 ] } },
+{ "type": "Feature", "id": 6, "properties": { "NAME": "Cintas Location"}, "geometry": { "type": "Point", "coordinates": [-82.73148300000003,41.401309 ] } }
 ]
 }
