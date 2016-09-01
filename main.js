@@ -83,7 +83,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 .style('stroke-width', 1.5 / scale + 'px')                
                 .attr('transform', 'translate(' + translate + ')scale(' + scale + ')')
                 .selectAll('.cities')
-                .attr('d', path.pointRadius(10/scale));
+                .attr('d', path.pointRadius(6/scale));
         }
 
         function reset() {
@@ -96,7 +96,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 .style('stroke-width', '1.5px')
                 .attr('transform', '')               
                 .selectAll('.cities')
-                .attr('d', path.pointRadius(10));
+                .attr('d', path.pointRadius(6));
         }
 
         function listLocations(d) {
