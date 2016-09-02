@@ -17,11 +17,6 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
 
         var path = d3.geoPath()
             .projection(projection);
-
-
-
-
-
         var svg = d3.select('#map').insert('svg')
             .attr('width', width)
             .attr('height', height);
@@ -35,7 +30,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
         var g = svg.append('g')
             .style('stroke-width', '1.5px');
        
-       svg.call(d3.zoom().on('zoom', zoomed));
+      var zoom =  svg.call(d3.zoom().on('zoom', zoomed));
 
         d3.json('data/us.json', function (error, us) {
             if (error) throw error;
@@ -54,10 +49,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
         });
 
         function zoomed() {
-            g.style('stroke-width', 1.5 / d3.event.scale + 'px')
-                .attr('transform', 'translate(' + d3.event.translate + ')scale(' + d3.event.scale + ')')
-                .selectAll('.cities')
-                .attr('d', path.pointRadius(6 / d3.event.scale));
+            this.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
         }
 
         function clicked(d) {
@@ -78,12 +70,9 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             var scale = .9 / Math.max(dx / width, dy / height);
             var translate = [width / 2 - scale * x, height / 2 - scale * y];
 
-
-
             svg.transition()
                 .duration(750)
                 .call(zoom.translate(translate).scale(scale).event);
-
         }
 
         function reset() {
