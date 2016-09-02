@@ -69,10 +69,12 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 y = (bounds[0][1] + bounds[1][1]) / 2;
             var scale = .9 / Math.max(dx / width, dy / height);
             var translate = [width / 2 - scale * x, height / 2 - scale * y];
+            
+            var transform = d3.zoomIdentity.translate(width / 2 - scale * x, height / 2 - scale * y).scale(scale);
 
-            svg.transition()
+            g.transition()
                 .duration(750)
-                .call(zoom.translate(translate).scale(scale).event);
+                .attr('transform',transform);
         }
 
         function reset() {
