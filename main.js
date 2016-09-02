@@ -18,7 +18,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
         var path = d3.geoPath()
             .projection(projection);
 
-        var zoom = d3.behavior.zoom()
+        var zoom = d3.zoom()
             .translate([0, 0])
             .scale(1)
             .scaleExtent([1, 8])
