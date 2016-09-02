@@ -9,9 +9,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
     function ($, _, d3, topojson) {
         var width = 960,
             height = 500,
-            active = d3.select(null),
-            scale = 1,
-           translate =  [0, 0];
+            active = d3.select(null);
 
         var projection = d3.geoAlbersUsa()
             .scale(1000)
@@ -19,6 +17,12 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
 
         var path = d3.geoPath()
             .projection(projection);
+
+        var zoom = d3.behavior.zoom()
+            .translate([0, 0])
+            .scale(1)
+            .scaleExtent([1, 8])
+            .on('zoom', zoomed);
 
         var svg = d3.select('#map').insert('svg')
             .attr('width', width)
@@ -31,7 +35,8 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             .on('click', reset);
 
         var g = svg.append('g')
-            .style('stroke-width', '1.5px');
+            .style('stroke-width', '1.5px')
+            .call(zoom.event);
 
         d3.json('data/us.json', function (error, us) {
             if (error) throw error;
@@ -41,18 +46,19 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 .enter().append('path')
                 .attr('d', path)
                 .attr('class', 'feature')
-                .on('click', clicked)
-                .on('zoom', zoomed);
+                .on('click', clicked);
 
             g.append('path')
                 .datum(topojson.mesh(us, us.objects.states, function (a, b) { return a !== b; }))
                 .attr('class', 'mesh')
                 .attr('d', path);
         });
-        
-        function zoomed(d)
-        {
 
+        function zoomed() {
+            g.style('stroke-width', 1.5 / d3.event.scale + 'px')
+                .attr('transform', 'translate(' + d3.event.translate + ')scale(' + d3.event.scale + ')')
+                .selectAll('.cities')
+                .attr('d', path.pointRadius(6 / d3.event.scale));
         }
 
         function clicked(d) {
@@ -60,10 +66,7 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             active.classed('active', false);
             active = d3.select(this).classed('active', true);
             d3.selectAll('.feature').filter(':not(.active)')
-            .transition().duration(750).style('opacity','.5');
-
-            
-
+                .transition().duration(750).style('opacity', '.5');
             if (d.id === 39) {
                 d3.json('data/ohio.json', showLocations);
             }
@@ -73,30 +76,32 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
                 dy = bounds[1][1] - bounds[0][1],
                 x = (bounds[0][0] + bounds[1][0]) / 2,
                 y = (bounds[0][1] + bounds[1][1]) / 2;
-                scale = .9 / Math.max(dx / width, dy / height);
-                translate = [width / 2 - scale * x, height / 2 - scale * y];
-         
-             
+            var scale = .9 / Math.max(dx / width, dy / height);
+            var translate = [width / 2 - scale * x, height / 2 - scale * y];
 
-            g.transition()
+
+
+            svg.transition()
                 .duration(750)
-                .style('stroke-width', 1.5 / scale + 'px')                
-                .attr('transform', 'translate(' + translate + ')scale(' + scale + ')')
-                .selectAll('.cities')
-                .attr('d', path.pointRadius(6/scale));
+                .call(zoom.translate(translate).scale(scale).event);
+
         }
 
         function reset() {
-            active.classed('active', false);
+            active.classed("active", false);
             active = d3.select(null);
-            d3.selectAll('.feature').classed('inactive', false);
 
-            g.transition()
+            svg.transition()
                 .duration(750)
-                .style('stroke-width', '1.5px')
-                .attr('transform', '')               
-                .selectAll('.cities')
-                .attr('d', path.pointRadius(6));
+                .call(zoom.translate([0, 0]).scale(1).event)
+                .selectAll('.feature').classed('inactive', false);
+
+            // g.transition()
+            //     .duration(750)
+            //     .style('stroke-width', '1.5px')
+            //     .attr('transform', '')
+            //     .selectAll('.cities')
+            //     .attr('d', path.pointRadius(6));
         }
 
         function listLocations(d) {
@@ -107,9 +112,9 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             g.selectAll('.cities')
                 .data(locations.features)
                 .enter()
-                .append('path')             
+                .append('path')
                 .attr('class', 'cities')
-                .attr('d', path.pointRadius(6/scale));
+                .attr('d', path.pointRadius(6 / d3.event.scale));
 
             locations.features.map(function (location) { $('#locations').append(location.properties.NAME); });
         }
