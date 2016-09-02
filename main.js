@@ -81,9 +81,9 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             active.classed("active", false);
             active = d3.select(null);
 
-            svg.transition()
+            g.transition()
                 .duration(750)
-                .call(zoom.translate([0, 0]).scale(1).event)
+                .attr('transform','')
                 .selectAll('.feature').classed('inactive', false);
 
             // g.transition()
