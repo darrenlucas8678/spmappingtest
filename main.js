@@ -18,11 +18,9 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
         var path = d3.geoPath()
             .projection(projection);
 
-        var zoom = d3.zoom()
-            .translate([0, 0])
-            .scale(1)
-            .scaleExtent([1, 8])
-            .on('zoom', zoomed);
+
+
+
 
         var svg = d3.select('#map').insert('svg')
             .attr('width', width)
@@ -35,8 +33,9 @@ require(['jquery', 'lodash', 'd3', 'topojson'],
             .on('click', reset);
 
         var g = svg.append('g')
-            .style('stroke-width', '1.5px')
-            .call(zoom.event);
+            .style('stroke-width', '1.5px');
+       
+       svg.call(d3.zoom().on('zoom', zoomed));
 
         d3.json('data/us.json', function (error, us) {
             if (error) throw error;
